@@ -77,3 +77,35 @@ class Solution {
        arr[0] = lastn;                    // ✅ put last element in front
     }
 };
+
+
+//find the fine 
+
+class Solution {
+  public:
+    long long int totalFine(int date, vector<int> &car, vector<int> &fine) {
+                int n = car.size();
+            long long int collection = 0;
+            if (date % 2==0){
+                for (int i = 0 ; i < n ; i++ ){
+                    // for even then add the odds one
+                    if(car[i]%2==1){
+                        collection =collection+ fine[i];
+                    }
+                }
+            }
+            else{ 
+                for (int i = 0 ; i < n ; i++ ){
+                    // for odd then add the even one
+                    if(car[i]%2==0){
+                        collection = collection+ fine[i];
+                    }
+                }
+                
+            }
+            return collection;
+    }
+};
+
+
+// union of 2 sorted arrays
