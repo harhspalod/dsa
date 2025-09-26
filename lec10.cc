@@ -109,3 +109,34 @@ class Solution {
 
 
 // union of 2 sorted arrays
+int main() {
+    array<int,4> a = {1,2,3,4};
+    array<int,4> b = {1,2,3,4};
+    int n = (int)a.size();
+    int m = (int)b.size();
+
+    vector<int> arr(n + m);          // replaces int arr[n+m];
+    for (int i = 0; i < n; ++i) arr[i] = a[i];
+    for (int i = 0; i < m; ++i) arr[n + i] = b[i];
+
+    // bubble sort (your logic is fine)
+    int k = n + m;
+    for (int i = 0; i < k - 1; ++i) {
+        for (int j = 0; j < k - 1 - i; ++j) {
+            if (arr[j] > arr[j + 1]) {
+                int tmp = arr[j + 1];
+                arr[j + 1] = arr[j];
+                arr[j] = tmp;
+            }
+        }
+    }
+    //unique
+    
+    for (int i = 0; i < k; i++) {
+        if (arr[i] != arr[i+1]) {   // only print if different from previous
+            cout << arr[i] << " ";
+        }
+    }
+    
+    return 0;
+}
