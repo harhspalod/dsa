@@ -14,18 +14,15 @@ public:
     }
 };
 
-// Function to create binary tree
 Node* Binarytree() {
     int x;
     cout << "Enter value (-1 for NULL): ";
     cin >> x;
 
-    // Base condition
     if (x == -1) {
         return NULL;
     }
 
-    // Create node
     Node* root = new Node(x);
 
     cout << "Enter left child of " << x << endl;
@@ -37,8 +34,46 @@ Node* Binarytree() {
     return root;
 }
 
+// Preorder
+void preorder(Node* root) {
+    if (!root) return;
+
+    cout << root->data << " ";   // space added
+    preorder(root->left);
+    preorder(root->right);
+}
+
+// Inorder
+void inorder(Node* root) {
+    if (!root) return;
+
+    inorder(root->left);
+    cout << root->data << " ";   // space added
+    inorder(root->right);
+}
+
+// Postorder
+void postorder(Node* root) {
+    if (!root) return;
+
+    postorder(root->left);
+    postorder(root->right);
+    cout << root->data << " ";   // space added
+}
+
 int main() {
     Node* root = Binarytree();
-    cout << "Tree created successfully!" << endl;
+
+    cout << "\nTree created successfully!\n";
+
+    cout << "\nPreorder: ";
+    preorder(root);
+
+    cout << "\nInorder: ";
+    inorder(root);
+
+    cout << "\nPostorder: ";
+    postorder(root);
+
     return 0;
 }
